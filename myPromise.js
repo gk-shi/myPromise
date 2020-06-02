@@ -53,15 +53,9 @@ function resolvePromise (promise, x, resolve, reject) {
   }
   // 2.3.2 如果 x 是一个 promise ，采用 promise 的状态(这里是指我们自己定义的 promise 类)
   if (x instanceof MyPromise) {
-    if (x.status === PENDING) {
-      x.then(function (y) {
-        resolvePromise(promise, y, resolve, reject)
-      }, reject)
-    } else if (x.status === FULFILLED) {
-      resolve(x.value)
-    } else {
-      reject(x.reason)
-    }
+    x.then(function (y) {
+      resolvePromise(promise, y, resolve, reject);
+    }, reject)
   } else if (typeof x === 'object' || typeof x === 'function') { // 2.3.3 如果 x 是一个对象或者方法
     // x 为 null 时单独考虑
     if (x === null) {
