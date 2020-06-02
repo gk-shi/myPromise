@@ -21,7 +21,7 @@
         "lint": "jshint lib",
         "mocha": "mocha",
         "prepublish": "node ./scripts/generateTestFiles.js",
-        "test": "promises-aplus-tests pro2.js"
+        "test": "promises-aplus-tests myPromise.js"
     },
     "dependencies": {
         "mocha": "^2.5.3",
